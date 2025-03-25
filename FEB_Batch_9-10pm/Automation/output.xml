@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-03-22T20:32:06.693289" rpa="false" schemaversion="5">
+<suite id="s1" name="Database" source="d:\VS_Code\Training\FEB_Batch_9-10pm\Automation\DBTest\database.robot">
+<kw name="Connect To Database" owner="DatabaseLibrary" type="SETUP">
+<msg time="2025-03-22T20:32:07.715010" level="INFO">Looking for configuration file: 'resources\db.cfg'</msg>
+<msg time="2025-03-22T20:32:07.722873" level="INFO">Configuration file doesn't exist</msg>
+<msg time="2025-03-22T20:32:07.827467" level="INFO">Connect to DB using : pymysql.connect(db='demo_practice', user='root', passwd=***, host='127.0.0.1', port=3306, charset='utf8mb4')</msg>
+<arg>pymysql</arg>
+<arg>${DBName}</arg>
+<arg>${DBuser}</arg>
+<arg>${DBpass}</arg>
+<arg>${DBhost}</arg>
+<arg>${DBport}</arg>
+<doc>Creates a database connection using the DB API 2.0 ``db_module`` and the parameters provided.
+Along with listed commonly used arguments (`db_name`, `db_host` etc.)
+you can set any other DB module specific parameters as key/value pairs.</doc>
+<status status="PASS" start="2025-03-22T20:32:07.710088" elapsed="0.123403"/>
+</kw>
+<test id="s1-t1" name="Delete Data from Table" line="59">
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2025-03-22T20:32:07.846195" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;delete from dummy_Stud;&lt;/code&gt;</msg>
+<msg time="2025-03-22T20:32:07.851727" level="INFO">Commit the transaction</msg>
+<msg time="2025-03-22T20:32:07.858647" level="INFO">${output} = None</msg>
+<var>${output}</var>
+<arg>delete from dummy_Stud;</arg>
+<doc>Executes the ``sql_string`` as a single SQL command.</doc>
+<status status="PASS" start="2025-03-22T20:32:07.839277" elapsed="0.020106"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-22T20:32:07.863685" elapsed="0.003931"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2025-03-22T20:32:07.872609" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${output}</arg>
+<arg>None</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-22T20:32:07.869593" elapsed="0.003959"/>
+</kw>
+<status status="PASS" start="2025-03-22T20:32:07.835080" elapsed="0.040567"/>
+</test>
+<kw name="Disconnect From Database" owner="DatabaseLibrary" type="TEARDOWN">
+<doc>Disconnects from the database.</doc>
+<status status="PASS" start="2025-03-22T20:32:07.881603" elapsed="0.001294"/>
+</kw>
+<status status="PASS" start="2025-03-22T20:32:06.721017" elapsed="1.162344"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Database" id="s1" pass="1" fail="0" skip="0">Database</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

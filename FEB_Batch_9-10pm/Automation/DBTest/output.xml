@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.13.2 on win32)" generated="2025-03-21T18:50:40.671035" rpa="false" schemaversion="5">
+<suite id="s1" name="Database" source="d:\VS_Code\Training\Farhana\Robot_Framework\DBTest\database.robot">
+<kw name="Connect To Database" owner="DatabaseLibrary" type="SETUP">
+<msg time="2025-03-21T18:50:40.857664" level="INFO">Looking for configuration file: 'resources\db.cfg'</msg>
+<msg time="2025-03-21T18:50:40.863868" level="INFO">Configuration file doesn't exist</msg>
+<msg time="2025-03-21T18:50:40.912041" level="INFO">Connect to DB using : pymysql.connect(db='demo_practice', user='root', passwd=***, host='127.0.0.1', port=3306, charset='utf8mb4')</msg>
+<arg>pymysql</arg>
+<arg>${DBName}</arg>
+<arg>${DBuser}</arg>
+<arg>${DBpass}</arg>
+<arg>${DBhost}</arg>
+<arg>${DBport}</arg>
+<doc>Creates a database connection using the DB API 2.0 ``db_module`` and the parameters provided.
+Along with listed commonly used arguments (`db_name`, `db_host` etc.)
+you can set any other DB module specific parameters as key/value pairs.</doc>
+<status status="PASS" start="2025-03-21T18:50:40.854003" elapsed="0.062093"/>
+</kw>
+<test id="s1-t1" name="Single insert" line="22">
+<kw name="Execute Sql String" owner="DatabaseLibrary">
+<msg time="2025-03-21T18:50:40.923115" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;Insert Into Dummy_Stud values(102,"Vino","Babu")&lt;/code&gt;</msg>
+<msg time="2025-03-21T18:50:40.924439" level="INFO">Commit the transaction</msg>
+<msg time="2025-03-21T18:50:40.927250" level="INFO">${output} = None</msg>
+<var>${output}</var>
+<arg>Insert Into Dummy_Stud values(102,"Vino","Babu")</arg>
+<doc>Executes the ``sql_string`` as a single SQL command.</doc>
+<status status="PASS" start="2025-03-21T18:50:40.922157" elapsed="0.005567"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-21T18:50:40.928913" elapsed="0.001377"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2025-03-21T18:50:40.934667" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${output}</arg>
+<arg>None</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-21T18:50:40.932099" elapsed="0.004800"/>
+</kw>
+<status status="PASS" start="2025-03-21T18:50:40.917206" elapsed="0.021796"/>
+</test>
+<test id="s1-t2" name="Multiple Insert" line="26">
+<kw name="Execute Sql Script" owner="DatabaseLibrary">
+<msg time="2025-03-21T18:50:40.946776" level="INFO">Splitting script file into statements...</msg>
+<msg time="2025-03-21T18:50:40.956230" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO Dummy_Stud values (201, "John", "Canady")&lt;/code&gt;</msg>
+<msg time="2025-03-21T18:50:40.957435" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO Dummy_Stud values (202, "David", "Canady")&lt;/code&gt;</msg>
+<msg time="2025-03-21T18:50:40.959091" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO Dummy_Stud values (203, "Smith", "Canady")&lt;/code&gt;</msg>
+<msg time="2025-03-21T18:50:40.960223" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO Dummy_Stud values (204, "Marry", "Canady")&lt;/code&gt;</msg>
+<msg time="2025-03-21T18:50:40.961520" level="INFO" html="true">Executing sql:&lt;br&gt;&lt;code style="font-weight: bold;"&gt;INSERT INTO Dummy_Stud values (205, "Tye", "Canady")&lt;/code&gt;</msg>
+<msg time="2025-03-21T18:50:40.962923" level="INFO">Commit the transaction</msg>
+<msg time="2025-03-21T18:50:40.965647" level="INFO">${output} = None</msg>
+<var>${output}</var>
+<arg>../DBTest/SCriptfile.sql</arg>
+<doc>Executes the content of the SQL script file loaded from `script_path` as SQL commands.</doc>
+<status status="PASS" start="2025-03-21T18:50:40.945690" elapsed="0.020657"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${output}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-03-21T18:50:40.968342" elapsed="0.002654"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2025-03-21T18:50:40.974746" level="INFO">Argument types are:
+&lt;class 'NoneType'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${output}</arg>
+<arg>None</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2025-03-21T18:50:40.972888" elapsed="0.003404"/>
+</kw>
+<status status="PASS" start="2025-03-21T18:50:40.942791" elapsed="0.036147"/>
+</test>
+<kw name="Disconnect From Database" owner="DatabaseLibrary" type="TEARDOWN">
+<doc>Disconnects from the database.</doc>
+<status status="PASS" start="2025-03-21T18:50:40.982740" elapsed="0.003165"/>
+</kw>
+<status status="PASS" start="2025-03-21T18:50:40.683376" elapsed="0.303406"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Database" id="s1" pass="2" fail="0" skip="0">Database</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
