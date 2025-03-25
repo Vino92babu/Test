@@ -14,23 +14,23 @@ Resource    Resources\Keywords\key.robot
 
 *** Test Cases ***
 
-# Tc1
-#     Open Browser    https://opensource-demo.orangehrmlive.com/web/index.php/auth/login    chrome
-#     Maximize Browser Window
-#     Sleep    2s
-#     Input Text    //input[@name="username"]    Admin
-#     Input Password    //input[@name="password"]    admin123
-#     Click Button    //button[@type="submit"]
+Tc1
+    Open Browser    https://opensource-demo.orangehrmlive.com/web/index.php/auth/login    chrome
+    Maximize Browser Window
+    Sleep    2s
+    Input Text    //input[@name="username"]    Admin
+    Input Password    //input[@name="password"]    admin123
+    Click Button    //button[@type="submit"]
 
-# dropdown
-#     Open Browser    https://rahulshettyacademy.com/AutomationPractice/    chrome
-#     Maximize Browser Window
-#     Sleep    2s
-#     Select From List By Index    //select[@id="dropdown-class-example"]    2
-#     Sleep    2s
-#     Select From List By Label    //select[@id="dropdown-class-example"]    Option3
-#     Sleep    2s
-#     Select From List By Value    //select[@id="dropdown-class-example"]    option1
+dropdown
+    Open Browser    https://rahulshettyacademy.com/AutomationPractice/    chrome
+    Maximize Browser Window
+    Sleep    2s
+    Select From List By Index    //select[@id="dropdown-class-example"]    2
+    Sleep    2s
+    Select From List By Label    //select[@id="dropdown-class-example"]    Option3
+    Sleep    2s
+    Select From List By Value    //select[@id="dropdown-class-example"]    option1
 
 
 # checkbox
